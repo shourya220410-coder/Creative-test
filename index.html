@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Collective Interactive Map</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow p-6 text-center">
+    <h1 class="text-3xl font-bold">Welcome to Creative Collective</h1>
+    <p class="text-gray-600 mt-2">Explore interactive art installations combining technology and visual art</p>
+  </header>
+
+  <!-- Rotating Banner -->
+  <div class="relative w-full h-64 overflow-hidden mt-4">
+    <!-- Image -->
+    <img id="bannerImage" src="images/banner1.jpg" alt="Banner" class="w-full h-full object-cover transition-opacity duration-500">
+
+    <!-- Indicator Balls -->
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div class="w-4 h-4 rounded-full bg-blue-500" id="dot1"></div>
+      <div class="w-4 h-4 rounded-full bg-gray-300" id="dot2"></div>
+      <div class="w-4 h-4 rounded-full bg-gray-300" id="dot3"></div>
+      <div class="w-4 h-4 rounded-full bg-gray-300" id="dot4"></div>
+      <div class="w-4 h-4 rounded-full bg-gray-300" id="dot5"></div>
+    </div>
+  </div>
+
+  <script>
+    const totalImages = 5;
+    let currentImage = 1;
+
+    function showImage(index) {
+      document.getElementById("bannerImage").src = `images/banner${index}.jpg`;
+      for (let i = 1; i <= totalImages; i++) {
+        document.getElementById(`dot${i}`).classList.remove("bg-blue-500");
+        document.getElementById(`dot${i}`).classList.add("bg-gray-300");
+      }
+      document.getElementById(`dot${index}`).classList.remove("bg-gray-300");
+      document.getElementById(`dot${index}`).classList.add("bg-blue-500");
+    }
+
+    setInterval(() => {
+      currentImage++;
+      if (currentImage > totalImages) currentImage = 1;
+      showImage(currentImage);
+    }, 1000);
+  </script>
+
+  <!-- Year Sections -->
+  <section class="p-6">
+    <h2 class="text-2xl font-semibold mb-4">Select a Year</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+      <a href="year5.html" class="bg-blue-500 text-white p-4 text-center rounded hover:bg-blue-600">Year 5</a>
+      <a href="year6.html" class="bg-blue-500 text-white p-4 text-center rounded hover:bg-blue-600">Year 6</a>
+      <a href="year7.html" class="bg-blue-500 text-white p-4 text-center rounded hover:bg-blue-600">Year 7</a>
+      <a href="year8.html" class="bg-blue-500 text-white p-4 text-center rounded hover:bg-blue-600">Year 8</a>
+      <a href="year9.html" class="bg-blue-500 text-white p-4 text-center rounded hover:bg-blue-600">Year 9</a>
+      <a href="year10.html" class="bg-blue-500 text-white p-4 text-center rounded hover:bg-blue-600">Year 10</a>
+      <a href="year11.html" class="bg-blue-500 text-white p-4 text-center rounded hover:bg-blue-600">Year 11</a>
+      <a href="year12.html" class="bg-blue-500 text-white p-4 text-center rounded hover:bg-blue-600">Year 12</a>
+    </div>
+  </section>
+
+  <!-- Venue Map Section -->
+  <section class="p-6">
+    <h2 class="text-2xl font-semibold mb-4">Venue Map</h2>
+    <div class="border border-gray-300 rounded-lg overflow-hidden flex justify-center">
+      <img src="maps/venue-map.jpg" alt="Venue Map" class="max-w-xs h-auto">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white p-4 mt-10 text-center text-sm text-gray-500">
+    © 2025 Creative Collective • Made by Year 10 Students
+  </footer>
+
+</body>
+</html>
